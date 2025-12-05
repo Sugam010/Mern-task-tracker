@@ -4,6 +4,12 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
 dotenv.config();
+
+console.log("==== STARTING SERVER FILE ====");
+console.log("NODE_ENV:", process.env.NODE_ENV || "not-set");
+console.log("PORT (env):", process.env.PORT || "not-set");
+console.log("MONGO_URI present:", process.env.MONGO_URI ? "yes" : "NO");
+
 connectDB();
 
 const app = express();
