@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -7,7 +7,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await api.post("/api/auth/login", {
         email,
         password,
       });
@@ -25,7 +25,11 @@ function Login() {
 
       <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
       <br />
-      <input placeholder="Password" onChange={(e) => setPassword(e.target.value)} type="password" />
+      <input
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        type="password"
+      />
       <br />
       <button onClick={handleLogin}>Login</button>
       <br /><br />

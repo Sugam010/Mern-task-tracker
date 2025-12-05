@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import api from "../api";
 import axios from "axios";
 
 function Dashboard() {
@@ -10,7 +11,7 @@ function Dashboard() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks", {
+      const res = await api.get("/api/tasks", {
         headers: {
           Authorization: token,
         },
@@ -24,7 +25,8 @@ function Dashboard() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await api.delete(`/api/tasks/${id}`, {
+
         headers: { Authorization: token },
       });
       fetchTasks();

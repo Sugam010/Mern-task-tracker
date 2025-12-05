@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../api"; 
 import axios from "axios";
 
 function CreateTask() {
@@ -11,8 +12,8 @@ function CreateTask() {
 
   const createTask = async () => {
     try {
-      await axios.post(
-        "http://localhost:5000/api/tasks",
+      await api.post(
+            "/api/tasks",
         { title, description, priority, status },
         { headers: { Authorization: token } }
       );

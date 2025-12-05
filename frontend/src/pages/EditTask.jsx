@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api"; 
 import { useParams } from "react-router-dom";
 
 function EditTask() {
@@ -9,7 +9,7 @@ function EditTask() {
   const [task, setTask] = useState(null);
 
   const fetchTask = async () => {
-    const res = await axios.get("http://localhost:5000/api/tasks", {
+    const res = await api.get("/api/tasks", {
       headers: { Authorization: token },
     });
 
@@ -19,8 +19,8 @@ function EditTask() {
 
   const updateTask = async () => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/tasks/${id}`,
+      await api.put(
+        `/api/tasks/${id}`,
         {
           title: task.title,
           description: task.description,
